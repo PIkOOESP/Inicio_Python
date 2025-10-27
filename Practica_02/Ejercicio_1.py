@@ -1,0 +1,15 @@
+print("Introduce un numero")
+x = input()
+x = int(x)
+
+print("Introduce otro numero")
+y = input()
+y = int(y)
+
+print("Suma --> " + str(x + y))
+print("Resta --> " + str(x - y))
+print("Multiplicacion --> " + str(x * y))
+print("Division normal --> " + str(x / y))
+print("Division entera --> " + str(x // y))
+print("Modulo(resto) --> " + str(x % y))
+print("Potencia --> " + str(x ** y))
