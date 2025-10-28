@@ -1,7 +1,7 @@
 # ================================
 # GESTOR DE NOTAS (versión simple)
 # ================================
-
+import math
 """
 Este programa permite gestionar alumnos y sus notas.
 Cada alumno se almacena en un diccionario dentro de una lista.
@@ -69,7 +69,7 @@ def buscar_alumno(lista, nombre):
 def anadir_nota(lista, i):
     """Una nota, y la añade."""
     try:
-        nota = float(input("Introduce la nota (0-10): "))
+        nota = float(input("Introduce la nota (0-10): ").strip())
         if 0 <= nota <= 10:
             lista[i]["notas"].append(nota)
             print("Nota añadida correctamente.")
@@ -85,8 +85,8 @@ def editar_nota(lista,i):
         for e in range(len(lista[i]["notas"])):
             print (str(e) + ": " + str(lista[i]["notas"][e]))
 
-        opcion = int(input("Introduce la posicion de la nota que quieres\n"))
-        lista[i]["notas"][opcion] = input("Introduce la nota deseada\n")
+        opcion = int(input("Introduce la posicion de la nota que quieres\n").strip())
+        lista[i]["notas"][opcion] = input("Introduce la nota deseada\n").strip()
     except ValueError:
         print("Debe ser un numero de la lista")
     except IndexError:
@@ -95,14 +95,93 @@ def editar_nota(lista,i):
 # Ejercicio 3
 def eliminar_nota(lista,i):
     try:
-        opcion = int(input("Introduce la posicion de la nota que quieres"))
+        opcion = int(input("Introduce la posicion de la nota que quieres\n").strip())
         lista[i]["notas"].pop(opcion)
     except ValueError:
         print("Debe ser un numero de la lista")
 
+# Ejercicio 5
+def media_alumno(lista):
+    """Muestra la media de un alumno concreto"""
+    nombre = input("Nombre del alumno: ").strip()
+    i = buscar_alumno(lista,nombre)
+
+    if i is None:
+        print("Alumno no encontrado.")
+        return
+    media = sum(lista[i]["notas"])/len(lista[i]["notas"])
+    print("La media de " + lista[i]["nombre"] + " es " + str(media))
+
+# Ejercicio 5
+def mediana_alumno(lista):
+    """Muestra la mediana de un alumno concreto"""
+    nombre = input("Nombre del alumno: ").strip()
+    i = buscar_alumno(lista,nombre)
+
+    if i is None:
+        print("Alumno no encontrado.")
+        return
+    
+    notas_ordenadas = lista[i]["notas"].sort()
+    mediana = notas_ordenadas[len(notas_ordenadas)/2]
+    print("La mediana de " + lista[i]["nombre"] + " es " + str(mediana))
+
+# Ejercicio 5
+def mejor_peor(lista):
+    """Muestra la mejor y peor nota de un alumno"""
+    nombre = input("Nombre del alumno: ").strip()
+    i = buscar_alumno(lista,nombre)
+
+    if i is None:
+        print("Alumno no encontrado.")
+        return
+    
+    mejor = max(lista[i]["notas"])
+    peor = min(lista[i]["notas"])
+
+    print("La peor nota de " + lista[i]["nombre"] + " es " + str(peor) + " y la mejor es " + str(mejor))
+
+# Ejercicio 5
+def media_global(lista):
+    """Muestra y devuelve la media global"""
+    total_notas = [n for alumno in lista for n in alumno["notas"]]
+    media_general = sum(total_notas) / len(total_notas)
+    print("Media global: " + str(media_general))
+    return media_general
+
+# Ejercicio 5
+def varianza(lista):
+    """Muestra y devuelve la varianza"""
+    sumatorio = 0
+    media_general = media_global(lista)
+    for i in range(len(lista)):
+        for n in range(len(lista[i]["notas"])):
+            sumatorio += math.pow((lista[i]["notas"][n] - media_general) ,2)
+    varianza = sumatorio/len(lista)
+    print("Varianza: " + str(varianza))
+    return varianza
+
+# Ejercicio 5
+def desviacion(lista):
+    """Muestra la desviacion estandar"""
+    v = varianza(lista)
+    desviacion = math.pow(v, 2)
+    print("Desviación estándar: " + str(desviacion))
+
+#Ejercicio 5
+def riesgo(lista):
+    """Muestra la lista de alumnos con notas suspensa"""
+    print("Alumnos en riesgo:")
+    for i in range(len(lista)):
+        if len(lista[i]["notas"] == 0):
+            continue
+        media = sum(lista[i]["notas"]) / len(lista[i]["notas"])
+        if media < 5 :
+            print("- " + lista[i]["nombre"] + " | media: " + str(media))
+
 def mostrar_notas(lista):
     """Muestra las notas de un alumno concreto."""
-    nombre = input("Nombre del alumno: ")
+    nombre = input("Nombre del alumno: ").strip()
     i = buscar_alumno(lista, nombre)
     if i is None:
         print("Alumno no encontrado.")
@@ -143,7 +222,7 @@ def eliminar_alumno(lista):
         print("Alumno no encontrado")
         return
     else:
-        opcion = input("Estas seguro que deseas eliminar al alumno :" + nombre + "\n")
+        opcion = input("Estas seguro que deseas eliminar al alumno :" + nombre + "\n").strip()
         if opcion in ("si", "sí", "yes", "y"):
             lista.pop(i)
             print("Alumno borrado correctamente")
@@ -161,11 +240,11 @@ def editar_alumno(lista):
     else:
         opcion = input("¿Quieres editar el nombre?")
         if opcion in ("si", "sí", "yes", "y"):
-            lista[i]["nombre"] = input("Introduce el nombre")
+            lista[i]["nombre"] = input("Introduce el nuevo nombre: ").strip
             
         opcion = input("¿Quieres editar la edad?")
         if opcion in ("si", "sí", "yes", "y"):
-            lista[i]["edad"] = input("Introduce la edad")
+            lista[i]["edad"] = input("Introduce la nueva edad: ").strip()
         
         opcion = input("¿Trabaja?").lower()
         if opcion in ("si", "sí", "yes", "y"):
@@ -183,7 +262,7 @@ def gestionar_notas(lista):
         return
     while True:
         menu_notas(nombre)
-        opcion = input("Selecciona una opcion: ")
+        opcion = input("Selecciona una opcion: ").strip()
 
         if opcion == "1":
             anadir_nota(lista, i)
@@ -204,7 +283,6 @@ def ranking(lista):
         return
 
     lista_desordenada = []
-    contador = 0
     for i in range(len(lista)):
         if len(lista[i]["notas"]) == 0:
             continue
@@ -227,7 +305,40 @@ def ranking(lista):
 #Ejercicio 5
 def informe(lista):
     """Muestra un informe extenso con los datos de los alumnos"""
+    while True:
+        menu_informe()
 
+        opcion = input("Elige una opcions: ").strip()
+
+        if(opcion == 1):
+            media_alumno(lista)
+
+        elif(opcion == 2):
+            mediana_alumno(lista)
+
+        elif(opcion == 3):
+            mejor_peor(lista)
+
+        elif(opcion == 4):
+            media_global(lista)
+
+        elif(opcion == 5):
+            desviacion(lista)
+
+        elif(opcion == 6):
+            varianza(lista)
+
+        elif(opcion == 7):
+            ranking(lista)
+
+        elif(opcion == 8):
+            riesgo(lista)
+
+        elif(opcion == 9):
+            break
+
+        else:
+            print("Elige una opcion válida")
  
 # ---------- PROGRAMA PRINCIPAL ----------
 
