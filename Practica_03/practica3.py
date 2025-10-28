@@ -20,7 +20,8 @@ def menu():
     print("5. Estadísticas generales")
     print("6. Eliminar un alumno")
     print("7. Ranking de alumnos")
-    print("8. Salir")
+    print("8. Informe general")
+    print("9. Salir")
 
 # Ejercicio 3
 def menu_notas(nombre):
@@ -115,6 +116,7 @@ def media_alumno(lista):
 # Ejercicio 5
 def mediana_alumno(lista):
     """Muestra la mediana de un alumno concreto"""
+    notas_ordenadas = []
     nombre = input("Nombre del alumno: ").strip()
     i = buscar_alumno(lista,nombre)
 
@@ -122,8 +124,8 @@ def mediana_alumno(lista):
         print("Alumno no encontrado.")
         return
     
-    notas_ordenadas = lista[i]["notas"].sort()
-    mediana = notas_ordenadas[len(notas_ordenadas)/2]
+    notas_ordenadas = sorted(lista[i]["notas"])
+    mediana = notas_ordenadas[len(notas_ordenadas)//2]
     print("La mediana de " + lista[i]["nombre"] + " es " + str(mediana))
 
 # Ejercicio 5
@@ -146,7 +148,6 @@ def media_global(lista):
     """Muestra y devuelve la media global"""
     total_notas = [n for alumno in lista for n in alumno["notas"]]
     media_general = sum(total_notas) / len(total_notas)
-    print("Media global: " + str(media_general))
     return media_general
 
 # Ejercicio 5
@@ -158,7 +159,6 @@ def varianza(lista):
         for n in range(len(lista[i]["notas"])):
             sumatorio += math.pow((lista[i]["notas"][n] - media_general) ,2)
     varianza = sumatorio/len(lista)
-    print("Varianza: " + str(varianza))
     return varianza
 
 # Ejercicio 5
@@ -173,7 +173,7 @@ def riesgo(lista):
     """Muestra la lista de alumnos con notas suspensa"""
     print("Alumnos en riesgo:")
     for i in range(len(lista)):
-        if len(lista[i]["notas"] == 0):
+        if len(lista[i]["notas"]) == 0:
             continue
         media = sum(lista[i]["notas"]) / len(lista[i]["notas"])
         if media < 5 :
@@ -310,31 +310,31 @@ def informe(lista):
 
         opcion = input("Elige una opcions: ").strip()
 
-        if(opcion == 1):
+        if(opcion == "1"):
             media_alumno(lista)
 
-        elif(opcion == 2):
+        elif(opcion == "2"):
             mediana_alumno(lista)
 
-        elif(opcion == 3):
+        elif(opcion == "3"):
             mejor_peor(lista)
 
-        elif(opcion == 4):
-            media_global(lista)
+        elif(opcion == "4"):
+            print("Media global: " + str(media_global(lista)))
 
-        elif(opcion == 5):
+        elif(opcion == "5"):
             desviacion(lista)
 
-        elif(opcion == 6):
-            varianza(lista)
+        elif(opcion == "6"):
+           print("Varianza: " + str(varianza(lista)))
 
-        elif(opcion == 7):
+        elif(opcion == "7"):
             ranking(lista)
 
-        elif(opcion == 8):
+        elif(opcion == "8"):
             riesgo(lista)
 
-        elif(opcion == 9):
+        elif(opcion == "9"):
             break
 
         else:
@@ -376,6 +376,9 @@ while True:
         ranking(alumnos)
 
     elif opcion == "8":
+        informe(alumnos)
+
+    elif opcion == "9":
         print("Fin del programa. ¡Hasta la próxima!")
         break
 
