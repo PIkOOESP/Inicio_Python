@@ -1,0 +1,12 @@
+Número de palabras: 281
+Número de líneas: 38
+Top 5 palabras más repetidas:
+que:18
+de:13
+y:12
+la:11
+a:9
+Número de vocales: 504
+Número de consonantes: 589
+Longitud media de las palabras: 3.96085409252669
+El número de veces que aparece vereda: 2
