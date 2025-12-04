@@ -9,4 +9,4 @@ a:9
 Número de vocales: 504
 Número de consonantes: 589
 Longitud media de las palabras: 3.96085409252669
-El número de veces que aparece vereda: 2
+El número de veces que aparece dejar: 3
