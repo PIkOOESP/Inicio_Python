@@ -68,7 +68,6 @@ def anadirUsuario(lista):
     guardarUsuario(lista)
 
 def log(accion):
-    logg = accion + ", " + datetime.datetime.now().strftime("%c") + "\n"
     with open("log.txt","a",encoding="utf-8") as fichero:
         fichero.write(accion + ", " + datetime.datetime.now().strftime("%c") + "\n")
 
