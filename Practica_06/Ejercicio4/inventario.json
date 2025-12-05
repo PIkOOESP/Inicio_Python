@@ -1,0 +1,14 @@
+[
+    {
+        "nombre": "Teclado",
+        "precio": 19.99,
+        "unidades": 30,
+        "categoria": "Periferico"
+    },
+    {
+        "nombre": "ordenador",
+        "precio": 5.99,
+        "unidades": 8,
+        "categoria": "pc"
+    }
+]
