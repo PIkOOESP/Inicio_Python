@@ -1,0 +1,22 @@
+Lista de libros, 2025-12-05 17:31:58.000324
+Buscar libro, 2025-12-05 17:32:06.991457
+Eliminar libro, 2025-12-05 17:32:09.446409
+Guardar libro, 2025-12-05 17:32:12.813135
+Saliendo del programa, 2025-12-05 17:32:12.814078
+Añadir libro, 2025-12-05 17:32:44.481799
+Guardar libro, 2025-12-05 17:33:16.493501
+Lista de libros, 2025-12-05 17:33:23.398580
+Buscar libro, 2025-12-05 17:33:29.799596
+Buscar libro, 2025-12-05 17:34:17.238745
+Eliminar libro, 2025-12-05 17:34:25.009425
+Guardar libro, 2025-12-05 17:34:27.225785
+Lista de libros, 2025-12-05 17:34:30.140594
+Guardar libro, 2025-12-05 17:34:55.266808
+Saliendo del programa, 2025-12-05 17:34:55.268141
+Añadir libro, 2025-12-05 17:35:01.500446
+Guardar libro, 2025-12-05 17:35:12.995598
+Lista de libros, 2025-12-05 17:35:17.120644
+Eliminar libro, 2025-12-05 17:35:21.194527
+Guardar libro, 2025-12-05 17:35:24.111138
+Guardar libro, 2025-12-05 17:35:27.900486
+Saliendo del programa, 2025-12-05 17:35:27.901916
