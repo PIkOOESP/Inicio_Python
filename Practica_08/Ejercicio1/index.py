@@ -1,11 +1,10 @@
-class Persona:
-    def __init__(self,nombre,edad):
-        self.nombre = nombre
-        self.edad = edad
-        
-    def saludar(self):
-        print("Hola, me llamo ", self.nombre)
-        
-    def es_mayor_edad(self):
-        if self.edad >= 18:
-            print(self.nombre," es mayor de edad.")
+from Persona import Persona
+
+persona1 = Persona("Gerardo",17)
+persona2 = Persona("Edgar",19)
+
+persona1.saludar()
+persona2.saludar()
+
+persona1.es_mayor_edad()
+persona2.es_mayor_edad()

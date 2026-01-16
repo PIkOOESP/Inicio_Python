@@ -1,6 +1,14 @@
-import Persona
 
-persona1 = Persona("Gerardo",17)
-persona2 = Persona("Edgar",19)
-
-persona1.saludar()
+class Persona:
+    def __init__(self,nombre,edad):
+        self.nombre = nombre
+        self.edad = edad
+        
+    def saludar(self):
+        print("Hola, me llamo ", self.nombre)
+        
+    def es_mayor_edad(self):
+        if self.edad >= 18:
+            print(self.nombre," es mayor de edad.")
+        else:
+            print(self.nombre," no es mayor de edad.")
