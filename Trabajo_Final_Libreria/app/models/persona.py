@@ -76,16 +76,3 @@ class Usuario(Persona):
     @classmethod
     def mostrar_total(cls):
         return f"Total de personas: {cls.cantidad_usuarios}"
-        
-        
-class Bibliotecario(Persona):
-    
-    def __init__(self, nombre, apellido, dni, edad, nss):
-        super().__init__(nombre, apellido, dni, edad)
-        self.nss = nss
-        
-    def getNss(self):
-        return self.nss
-    
-    def setNss(self, nss):
-        self.nss = nss
