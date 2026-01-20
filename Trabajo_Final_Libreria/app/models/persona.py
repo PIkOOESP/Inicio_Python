@@ -73,4 +73,4 @@ class Usuario(Persona):
     
     @classmethod
     def mostrar_total(cls):
-        return f"Total de personas: {cls.cantidad_usuarios}"
+        return f"Total de usuarios: {cls.cantidad_usuarios}"
