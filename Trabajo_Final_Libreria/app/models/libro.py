@@ -1,4 +1,6 @@
-class libro:
+import re
+
+class Libro:
     cantidad_libros = 0
     
     def __init__(self, titulo, isbn, autor, editorial):
@@ -6,7 +8,7 @@ class libro:
         self.__isbn = isbn
         self.__autor = autor
         self.__editorial = editorial
-        libro.cantidad_libros += 1
+        Libro.cantidad_libros += 1
         
     def getTitulo(self):
         return self.__titulo
@@ -38,3 +40,7 @@ class libro:
     @classmethod
     def mostrar_total(cls):
         return f"Cantidad total de libros: {cls.cantidad_libros}"
+    
+    @staticmethod
+    def es_isbn_valido(isbn):
+        return bool(re.match(r'^978-84-\d{1,5}-\d{1,7}-[\dX]$|^979-84-\d{1,5}-\d{1,7}-[\dX]$', isbn))

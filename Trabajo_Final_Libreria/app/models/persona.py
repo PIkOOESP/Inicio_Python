@@ -50,11 +50,8 @@ class Persona:
         return f"Total de personas: {cls.cantidad_personas}"
     
     @staticmethod
-    def validar_dni():
-        if re.match(r'^\d{8}[a-zA-Z]{1}$'):
-            return True
-        else:
-            return False
+    def validar_dni(dni):
+        return bool(re.match(r'^\d{8}[a-zA-Z]{1}$', dni))
         
 class Usuario(Persona):
     cantidad_usuarios = 0
@@ -71,7 +68,8 @@ class Usuario(Persona):
         self.__email = email
         
     def mostrar_info(self):
-        return super().mostrar_info + f"\nEmail:{self.__email}"
+        info_persona = super().mostrar_info()
+        return f"{info_persona}\nEmail:{self.__email}"
     
     @classmethod
     def mostrar_total(cls):
